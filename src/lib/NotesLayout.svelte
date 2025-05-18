@@ -2,18 +2,18 @@
     import { push } from "svelte-spa-router";
     // import notesRoutes from "../routes/client/books";
 
-    let isOpen = false;
+    let isOpen = true;
 
     const toggleMenu = () => {
         isOpen = !isOpen;
     };
 
     const buttons = [
-        { icon: 'bi-house', deg: -90, menu_url: '/' },
-        { icon: 'bi-gear', deg: -45, menu_url: 'technology' },
-        { icon: 'bi-person', deg: 0, menu_url: 'personal' },
-        { icon: 'bi-database', deg: 45, menu_url: 'database' },
-        { icon: 'bi-info-circle', deg: 90, menu_url: 'about' },
+        { icon: 'bi-house', deg: -90, menu_url: '/', title: 'Home' },
+        { icon: 'bi-gear', deg: -45, menu_url: 'technology', title: 'Technology' },
+        { icon: 'bi-person', deg: 0, menu_url: 'personal', title: 'Personal' },
+        { icon: 'bi-database', deg: 45, menu_url: 'database', title: 'Database' },
+        { icon: 'bi-info-circle', deg: 90, menu_url: 'about', title: 'About' },
     ];
 </script>
 
@@ -21,7 +21,7 @@
     <Router routes={notesRoutes} />
 </section> -->
 
-<div class="fab-container {isOpen ? 'open' : ''}">
+<div class="fab-container {isOpen ? 'open' : ''}" title="Menu">
   <button aria-label="Toggle menu" class="fab-toggle {isOpen ? 'rotate' : ''}" on:click={toggleMenu}>
     <i class="bi bi-{isOpen ? 'columns-gap' : 'grid'}"></i>
   </button>
@@ -36,6 +36,8 @@
           }
         }}
         class="fab-item"
+        id="fab-item-{i + 1}"
+        title="{item.title}"
         style="--deg: {item.deg}deg;"
         aria-label="Menu {i + 1}"
       >
@@ -49,9 +51,9 @@
 <style>
   .fab-container {
     position: fixed;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
     z-index: 999;
   }
 
@@ -73,8 +75,9 @@
 
   .fab-menu {
     position: absolute;
-    top: 0;
-    left: 50%;
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
     width: 0;
     height: 0;
     pointer-events: none;
@@ -100,7 +103,8 @@
     transform:
       translate(-50%, -50%) scale(1)
       rotate(var(--deg))
-      translateY(-90px)
+      translateX(90px)
       rotate(calc(-1 * var(--deg)));
   }
+
 </style>

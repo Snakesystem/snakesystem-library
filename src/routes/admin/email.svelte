@@ -9,7 +9,7 @@
 <Sidebar />
 <Header />
 
-<section class="dashboard {$isOpen ? 'sidebar-open' : 'sidebar-collapsed'}">
+<section class="email {$isOpen ? 'sidebar-open' : 'sidebar-collapsed'}">
   <div class="card">
     <div class="card-header">
         Featured
@@ -23,7 +23,7 @@
 </section>
 
 <style>
-  .dashboard {
+  .email {
     position: absolute;
     top: 0;
     left: 15rem;
@@ -35,12 +35,12 @@
     z-index: 0;
   }
 
-  .dashboard.sidebar-collapsed {
+  .email.sidebar-collapsed {
     left: 6rem;
     width: calc(100% - 6rem);
   }
 
-  .dashboard.sidebar-open {
+  .email.sidebar-open {
     left: 15rem;
     width: calc(100% - 15rem);
   }
