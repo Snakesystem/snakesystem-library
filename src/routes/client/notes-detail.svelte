@@ -20,18 +20,6 @@
       markedHighlight({
       emptyLangClass: 'hljs',
         langPrefix: 'hljs language-',
-        // highlight(code, lang, info) {
-        //   const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-        //   const highlighted = hljs.highlight(code, { language }).value;
-
-        //   // Inject tombol copy
-        //   return `
-        //     <div class="code-block-wrapper">
-        //       <button class="copy-button">Copy</button>
-        //       </div>
-        //     <pre><code class="hljs language-${language}">${highlighted}</code></pre>
-        //   `;
-        // }
         highlight(code, lang, info) {
           const language = hljs.getLanguage(lang) ? lang : 'plaintext';
           return hljs.highlight(code, { language }).value;
@@ -58,19 +46,6 @@
             markdown = await res.text();
             htmlContent = await marked.parse(markdown);
           }
-
-          setTimeout(() => {
-            document.querySelectorAll('.copy-button').forEach(btn => {
-              btn.addEventListener('click', () => {
-                const codeEl = btn.nextElementSibling?.querySelector('code');
-                if (codeEl) {
-                  navigator.clipboard.writeText(codeEl.innerText);
-                  btn.innerText = 'Copied!';
-                  setTimeout(() => btn.innerText = 'Copy', 1000);
-                }
-              });
-            });
-          }, 500);
         }
         
       } catch (err) {
