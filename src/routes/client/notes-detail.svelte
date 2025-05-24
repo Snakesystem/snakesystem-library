@@ -7,6 +7,7 @@
     import Loading from '../../components/Loading.svelte';
     import hljs from 'highlight.js';
     import 'highlight.js/styles/atom-one-dark.css'; // atau tema lain
+  import { base_url } from '..';
 
     let result = $state({
         result: false,
@@ -31,7 +32,7 @@
 
       try {
         if(slug?.wild) {
-          const response = await fetch(`/api/library/get-single/${slug?.wild}`, {
+          const response = await fetch(`${base_url}/library/get-single/${slug?.wild}`, {
             method: 'GET',
             credentials: 'include',
             headers: {

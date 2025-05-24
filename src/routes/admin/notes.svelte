@@ -3,7 +3,7 @@
   import Header from "../../components/Header.svelte";
   import ModalNotes from "../../components/ModalNotes.svelte";
   import ModalContainer from "../../lib/ModalContainer.svelte";
-  import { isOpen, fetchColumns, openModal } from "../index";
+  import { isOpen, fetchColumns, openModal, base_url } from "../index";
 
   // ini wajib supaya $isOpen bisa dipakai
   import { onMount } from "svelte";
@@ -56,7 +56,7 @@
     // Initialize new table
     // @ts-ignore
     globalThis.$("#myTable").bootstrapTable({
-      url: `/api/data/get-table?tablename=${tablename}&nidkey=${tablePK}&filter=${JSON.stringify(filter)}`,
+      url: `${base_url}/data/get-table?tablename=${tablename}&nidkey=${tablePK}&filter=${JSON.stringify(filter)}`,
       method: "GET",
       contentType: "application/json",
       buttons: toolbarButton(),

@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import LoadingList from '../../components/LoadingList.svelte';
+  import { base_url } from '..';
 
     const { slug } = $props();
     let result = $state({
@@ -12,7 +13,7 @@
     onMount(async() => {
         try {
             if(slug?.slug) {
-                const response = await fetch(`/api/library/get/${slug?.slug}`, {
+                const response = await fetch(`${base_url}/library/get/${slug?.slug}`, {
                     method: 'GET',
                     credentials: 'include',
                     headers: {

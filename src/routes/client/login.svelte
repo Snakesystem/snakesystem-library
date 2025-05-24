@@ -1,6 +1,7 @@
 <script>
   // @ts-nocheck
     import { push } from "svelte-spa-router";
+  import { base_url } from "..";
 
     let formData = $state({
         password: '',
@@ -8,7 +9,7 @@
     });
 
     async function login() {
-        const response = await fetch('/api/auth/login', {
+        const response = await fetch(`${base_url}/auth/login`, {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -52,7 +53,7 @@
         <div class="social-icons">
         <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
             <a aria-label="Twitter" class="btn btn-dark m-3" href="#!"><i class="bi bi-twitter"></i></a>
-            <a aria-label="Github" class="btn btn-dark m-3" href="https://github.com/snakesystem"><i class="bi bi-github"></i></a>
+            <a aria-label="Github" class="btn btn-dark m-3" href="https://github.com/feri-irawansyah"><i class="bi bi-github"></i></a>
             <a aria-label="Instagram" class="btn btn-dark m-3" href="#!"><i class="bi bi-instagram"></i></a>
         </div>
         </div>

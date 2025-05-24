@@ -1,5 +1,5 @@
 <script>
-    import { isOpen } from "../routes"
+    import { base_url, isOpen } from "../routes"
     import { location } from "svelte-spa-router"
 
     function RenameUrl(params) {
@@ -9,7 +9,7 @@
     }
 
     async function logout() {
-      const response = await fetch('/api/auth/logout', {
+      const response = await fetch(`${base_url}/auth/logout`, {
           method: 'GET',
           credentials: 'include',
           headers: {

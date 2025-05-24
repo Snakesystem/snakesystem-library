@@ -5,10 +5,11 @@ import { push } from "svelte-spa-router";
 import { writable } from "svelte/store";
 
 export const isOpen = writable(true);
+export const base_url = "https://snakesystem-web-api-tdam.shuttle.app/api/v1"
 
 export async function fetchColumns(tablename) {
   try {
-    const response = await fetch(`/api/data/header?tablename=${tablename}`);
+    const response = await fetch(`${base_url}/data/header?tablename=${tablename}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -86,7 +87,7 @@ export const routes = {
         asyncComponent: () => import('./admin/dashboard.svelte'),
         conditions: [
             async (detail) => {
-                const response = await fetch('/api/auth/session', {
+                const response = await fetch(`${base_url}/auth/session`, {
                     method: 'GET',
                     credentials: 'include',
                     headers: {
@@ -115,7 +116,7 @@ export const routes = {
         asyncComponent: () => import('./admin/notes.svelte'),
         conditions: [
             async (detail) => {
-                const response = await fetch('/api/auth/session', {
+                const response = await fetch(`${base_url}/auth/session`, {
                     method: 'GET',
                     credentials: 'include',
                     headers: {
@@ -144,7 +145,7 @@ export const routes = {
         asyncComponent: () => import('./admin/email.svelte'),
         conditions: [
             async (detail) => {
-                const response = await fetch('/api/auth/session', {
+                const response = await fetch(`${base_url}/auth/session`, {
                     method: 'GET',
                     credentials: 'include',
                     headers: {
