@@ -1,10 +1,11 @@
 <script>
 // @ts-nocheck
 
-  import NotesLayout from "../../lib/NotesLayout.svelte";
   import { params, location, push } from 'svelte-spa-router';
   import NotesList from './notes-list.svelte';
   import NotesDetail from "./notes-detail.svelte";
+  import Navigation from "../../lib/Navigation.svelte";
+  import About from './about.svelte';
 
   let slug = $state('');
   let wild = $state('');
@@ -22,44 +23,36 @@
 
 </script>
 
-<section >
-  <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="/img/bg.mp4" type="video/mp4" /></video>
+<section class="bg-dark">
   <div class="container">
-    {#if wild}
-      <NotesDetail slug={$params} />
-    {:else if slug}
-      <NotesList slug={$params} />
-    {:else}
-      <NotesList slug={$params} />
-    {/if}
+    <div class="row">
+      <div class="col-lg-3">
+        <Navigation/>
+      </div>
+      <div class="col-lg-9">
+        {#if $location == '/notes/about'}
+        <About />
+        {:else if wild}
+        <NotesDetail slug={$params} />
+        {:else if slug}
+        <NotesList slug={$params} />
+        {:else}
+          <NotesList slug={$params} />
+        {/if}
+      </div>
+    </div>
   </div>
 </section>
 
-<NotesLayout/>
-
 <style scoped>
-
-  video {
-    position: fixed;
-    top: 50%;
-    bottom: 50%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
 
   section {
     z-index: 9;
+    height: 100vh;
   }
 
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 10rem;
-    position: relative;
-    height: 100vh;
+  .col-lg-9 {
+    padding: 0 1rem;
   }
 
 </style>

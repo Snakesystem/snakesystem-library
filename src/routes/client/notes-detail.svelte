@@ -7,7 +7,7 @@
     import Loading from '../../components/Loading.svelte';
     import hljs from 'highlight.js';
     import 'highlight.js/styles/atom-one-dark.css'; // atau tema lain
-  import { base_url } from '..';
+  import { base_url, formatWIBDate } from '..';
 
     let result = $state({
         result: false,
@@ -59,9 +59,19 @@
 </script>
 
 <div class="content">
-    <h1 class="text-white">{result.data.title}</h1>
+    <div class="d-flex flex-column align-items-start w-100 gap-2">
+      <a class="btn back" href="/#/notes/{slug?.slug}"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</a>
+      <h3 class="text-white">{result.data.title}</h3>
+    </div>
 
-    <a class="btn btn-light back btn-sm" href="/#/notes/{slug?.slug}"><i class="bi bi-arrow-left"></i> Kembali</a>
+    <div class="d-flex flex-row align-items-start justify-content-start w-100">
+      <img src="https://feri-irawansyah.github.io/favicon.ico" class="mb-3" width="50px" alt="">
+      <div class="flex-column">
+        <a class="text-decoration-none text-muted" href="https://github.com/feri-irawansyah" target="_blank">
+        Feri Irawansyah <img src="/img/real.png" width="20px" alt=""></a>
+        <p class="text-muted">{formatWIBDate(result.data.last_update)}</p>
+      </div>
+    </div>
 
     {#if loading}
         <Loading/>
@@ -82,14 +92,19 @@
         justify-content: start;
         align-items: center;
         z-index: 99;
-        background-color: #04414dda;
+        /* background-color: #04414dda; */
         padding: 1rem;
     }
 
     .back {
-        position: absolute;
-        top: 2rem;
-        left: 11rem;
+      font-size: 1.1rem;
+      padding: 0;
+      margin-bottom: 2rem;
+    }
+
+    .back:hover {
+      color: #fff;
+      text-decoration: none;
     }
 
 </style>
