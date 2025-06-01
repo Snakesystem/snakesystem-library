@@ -5,7 +5,7 @@ import { push } from "svelte-spa-router";
 import { writable } from "svelte/store";
 
 export const isOpen = writable(true);
-export const base_url = "http://localhost:8000/api/v1"
+export const base_url = "https://snakesystem-web-api-tdam.shuttle.app/api/v1"
 
 export async function fetchColumns(tablename) {
   try {

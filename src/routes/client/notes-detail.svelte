@@ -69,7 +69,7 @@
       <div class="flex-column">
         <a class="text-decoration-none text-muted" href="https://github.com/feri-irawansyah" target="_blank">
         Feri Irawansyah <img src="/img/real.png" width="20px" alt=""></a>
-        <p class="text-muted">{formatWIBDate(result.data.last_update)}</p>
+        <p class="text-muted">{formatWIBDate(result.data.last_update ? result.data.last_update : new Date())}</p>
       </div>
     </div>
 

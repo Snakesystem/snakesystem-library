@@ -29,18 +29,21 @@
     <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="/img/bg.mp4" type="video/mp4" /></video>
         <div class="masthead">
             <div class="masthead-content text-white w-100">
-                <form on:submit|preventDefault={login}>
-                        <h2 class="mb-4">Masuk Admin</h2>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="Email" bind:value={formData.email}>
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="password" placeholder="Password" bind:value={formData.password}>
-                            <label for="password">Password</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100 py-2 mb-5">Submit</button>
-                    </form>
+                <form onsubmit={(e) => {
+                    e.preventDefault();
+                    login();
+                }}>
+                    <h2 class="mb-4">Masuk Admin</h2>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" placeholder="Email" bind:value={formData.email}>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="password" placeholder="Password" bind:value={formData.password}>
+                        <label for="password">Password</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 py-2 mb-5">Submit</button>
+                </form>
             </div>
         </div>
         <div class="social-icons">

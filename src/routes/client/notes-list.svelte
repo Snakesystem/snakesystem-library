@@ -4,21 +4,35 @@
     import Loading from '../../components/Loading.svelte';
 
     export let slug; // pastikan ini di-declare dan dikirim dari router
+    let offset = 0;
+    let limit = 10;
+
+    let currentPage = 1;
+    let totalPages = 1;
+
+    $: totalPages = Math.ceil(result.data.total / limit);
 
     let result = {
         result: false,
-        data: []
+        data: {
+            rows: [],
+            totalNotFiltered: 0,
+            total: 0
+        }
     };
     let loading = true;
 
     $: if (slug?.slug) {
+        offset = 0;
+        currentPage = 1;
         fetchData(slug.slug);
     }
+
 
     async function fetchData(slugValue) {
         loading = true;
         try {
-            const response = await fetch(`${base_url}/library/get/${slugValue}`, {
+            const response = await fetch(`${base_url}/data/get-table?tablename=Notes&offset=${offset}&limit=${limit}&nidkey=NotesNID&filter=${JSON.stringify({ NotesCategory: slugValue })}`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
@@ -26,7 +40,11 @@
                 }
             });
             const data = await response.json();
-            result = data;
+            loading = false;
+            result = {
+                result: true,
+                data: data
+            };
         } catch (err) {
             console.error(err);
             loading = false;
@@ -34,12 +52,20 @@
             loading = false;
         }
     }
+
+    function goToPage(page) {
+        if (page < 1 || page > totalPages) return;
+        currentPage = page;
+        offset = (currentPage - 1) * limit;
+        fetchData(slug.slug);
+    }
+
 </script>
 
 <div class="content">
     {#if loading}
         <Loading/> 
-    {:else if result.data.length === 0}
+    {:else if result.data.rows.length === 0}
         <div class="d-flex flex-column">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -63,13 +89,8 @@
         <div class="row">
             <div class="col-12">
                 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
                     <div class="carousel-inner">
-                        {#each result.data.slice(0, 3) as item, i}
+                        {#each result.data.rows.slice(0, 3) as item, i}
                             <div class="carousel-item {i === 0 ? 'active' : ''}">
                                 <img src={`/img/notes/${item.Slug}.png` || '/img/bg-mobile-fallback.jpg'} class="d-block w-100" alt={item.Title}>
                                 <div class="carousel-caption">
@@ -85,13 +106,11 @@
                         {/each}
                         <div class="gradient-overlay"></div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                    <button class="btn btn-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev" aria-label="Previous">
+                        <i class="bi bi-caret-left-fill"></i>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                    <button class="btn btn-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next" aria-label="Next">
+                        <i class="bi bi-caret-right-fill"></i>
                     </button>
                 </div>
             </div>
@@ -105,7 +124,7 @@
             </div>
             <div class="col-12">
                 <div class="flex-row card-group">
-                    {#each result.data as note}
+                    {#each result.data.rows as note}
                     <button class="card text-center" onclick={() => push(`/notes/${slug?.slug}/${note.Slug}`)}>
                         <div class="gradient-overlay"></div>
                         <img src="/img/notes/{note.Slug}.png" class="card-img-top rounded py-1" alt="">
@@ -130,6 +149,26 @@
                 </div>
             </div>
         </div>
+
+        <!-- Pagination -->
+        <nav class="my-4 w-100" aria-label="Pagination">
+            <ul class="pagination justify-content-end" style="margin-right: 1rem;">
+                <li class="page-item {currentPage === 1 ? 'disabled' : ''}">
+                    <button class="page-link" onclick={() => goToPage(currentPage - 1)} aria-label="Previous"><i class="bi bi-caret-left-fill"></i></button>
+                </li>
+
+                {#each Array(totalPages) as _, i}
+                <li class="page-item {currentPage === i + 1 ? 'active' : ''}">
+                    <button class="page-link" onclick={() => goToPage(i + 1)}>{i + 1}</button>
+                </li>
+                {/each}
+
+                <li class="page-item {currentPage === totalPages ? 'disabled' : ''}">
+                    <button class="page-link" onclick={() => goToPage(currentPage + 1)} aria-label="Next"><i class="bi bi-caret-right-fill"></i></button>
+                </li>
+            </ul>
+        </nav>
+
     {/if}
 </div>
 
@@ -162,7 +201,7 @@
         /* overflow-y: scroll; */
     }
 
-    .card:hover img {
+    .card:hover .card-img-top {
         filter: blur(4px);
         transition: filter 0.3s ease;
     }

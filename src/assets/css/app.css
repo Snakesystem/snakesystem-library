@@ -511,12 +511,6 @@ video.bg-video {
   position: relative;
 }
 
-.content .carousel .carousel-indicators {
-  background-color: #fff;
-  color: #fff;
-  z-index: 999;
-}
-
 .content .carousel .carousel-item {
   height: 100%;
   width: 100%;
@@ -568,11 +562,24 @@ video.bg-video {
   left: 80%;
 }
 
-.carousel button .carousel-control-next-icon,
-.carousel button .carousel-control-prev-icon {
-  background-color: #2b2828;
+.carousel .btn {
+  background-color: #3d3d3d;
   color: #fff !important;
-  font-size: 12px !important;
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  position: absolute;
+  z-index: 999;
+}
+.carousel .btn-prev {
+  right: 5rem;
+}
+.carousel .btn-next {
+  right: 2rem;
+}
+
+.carousel .btn:hover {
+  background-color: #fff;
+  color: #3d3d3d !important;
 }
 
 .carousel button .carousel-control-next-icon {
