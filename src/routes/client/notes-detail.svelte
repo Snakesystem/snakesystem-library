@@ -76,9 +76,12 @@
     {#if loading}
         <Loading/>
     {:else}
-        <div class="markdown-body">
-            {@html htmlContent}
-        </div>
+      <div class="image-content d-flex justify-content-center px-5 pt-3">
+        <img class="img-fluid rounded" src="/img/notes/{result.data.slug}.png" alt="">
+      </div>
+      <div class="markdown-body">
+          {@html htmlContent}
+      </div>
     {/if}
 </div>
 
@@ -94,6 +97,10 @@
         z-index: 99;
         /* background-color: #04414dda; */
         padding: 1rem;
+    }
+
+    .image-content {
+      background-color: #292b2c;
     }
 
     .back {

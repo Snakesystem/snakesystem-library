@@ -17,7 +17,7 @@
     }
 
     if($location === '/notes' || $location === '/notes/') {
-      push('/notes/technology');
+      push('/notes/backend');
     }
   })
 

@@ -1,8 +1,7 @@
 <script>
-    import { onMount } from 'svelte';
     import LoadingList from '../../components/LoadingList.svelte';
     import { base_url, formatWIBDate } from '..';
-  import { push } from 'svelte-spa-router';
+    import { push } from 'svelte-spa-router';
 
     export let slug; // pastikan ini di-declare dan dikirim dari router
 
@@ -38,54 +37,55 @@
 </script>
 
 <div class="content">
-    
-    <div class="row">
-        <div class="col-12">
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    {#each result.data.slice(0, 3) as item, i}
-                        <div class="carousel-item {i === 0 ? 'active' : ''}">
-                            <img src={item.ImageUrl || '/img/bg-mobile-fallback.jpg'} class="d-block w-100" alt={item.Title}>
-                            <div class="carousel-caption">
-                                <p>{formatWIBDate(item.LastUpdate)}</p>
-                                <h5 class="text-uppercase">{item.Title}</h5>
-                                <p>{item.Description || 'No description available.'}</p>
-                                <div class="d-flex gap-2" style="width: 100%; height: 20%; padding: 5px; border-radius: 5px;">
-                                    <img class="img-fluid" src="https://feri-irawansyah.github.io/favicon.ico" alt="" style="width: 1.5rem; height: 1.5rem;">
-                                    <span>Feri Irawansyah</span>
+    {#if loading}
+        <LoadingList/>
+    {:else if result.data.length === 0}
+        <h1 class="text-center text-muted">No notes found.</h1>
+    {:else}
+        <div class="row">
+            <div class="col-12">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        {#each result.data.slice(0, 3) as item, i}
+                            <div class="carousel-item {i === 0 ? 'active' : ''}">
+                                <img src={`/img/notes/${item.Slug}.png` || '/img/bg-mobile-fallback.jpg'} class="d-block w-100" alt={item.Title}>
+                                <div class="carousel-caption">
+                                    <p>{formatWIBDate(item.LastUpdate)}</p>
+                                    <h5 class="text-uppercase">{item.Title}</h5>
+                                    <p>{item.Description || 'No description available.'}</p>
+                                    <div class="d-flex gap-2" style="width: 100%; height: 20%; padding: 5px; border-radius: 5px;">
+                                        <img class="img-fluid" src="https://feri-irawansyah.github.io/favicon.ico" alt="" style="width: 1.5rem; height: 1.5rem;">
+                                        <span>Feri Irawansyah</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {/each}
-                    <div class="gradient-overlay"></div>
+                        {/each}
+                        <div class="gradient-overlay"></div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="d-flex flex-column " style="padding: 1rem;">
-                <h3>Latest Notes</h3>
-                <p>Jelajahi catatan saya—tutorial, wawasan teknologi, opini gajelas, dan pemikiran teknologi yang disusun untuk memicu ide dan terkadang memecahkan masalah.</p>
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex flex-column " style="padding: 1rem;">
+                    <h3>Latest Notes</h3>
+                    <p>Jelajahi catatan saya—tutorial, wawasan teknologi, opini gajelas, dan pemikiran teknologi yang disusun untuk memicu ide dan terkadang memecahkan masalah.</p>
+                </div>
             </div>
-        </div>
-        <div class="col-12">
-            {#if loading}
-                <LoadingList/>
-            {:else}
+            <div class="col-12">
                 <div class="flex-row card-group">
                     {#each result.data as note}
                     <button class="card text-center" onclick={() => push(`/notes/${slug?.slug}/${note.Slug}`)}>
@@ -110,9 +110,9 @@
                     </button>
                     {/each}
                 </div>
-            {/if}
+            </div>
         </div>
-    </div>
+    {/if}
 </div>
 
 <style scoped>

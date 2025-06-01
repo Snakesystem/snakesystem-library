@@ -18,14 +18,14 @@
             </div>
         </div>
         <div class="social-icons">
-        <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
-            <a aria-label="Twitter" class="btn btn-dark m-3" href="#!"><i class="bi bi-twitter"></i></a>
-            <a aria-label="Github" class="btn btn-dark m-3" href="https://github.com/feri-irawansyah"><i class="bi bi-github"></i></a>
-            <a aria-label="Instagram" class="btn btn-dark m-3" href="#!"><i class="bi bi-instagram"></i></a>
-            <a aria-label="home" class="btn btn-dark m-3" href="/#/"><i class="bi bi-house"></i></a>
-            <a aria-label="notes" class="btn btn-dark m-3" href="/#/notes"><i class="bi bi-book"></i></a>
-            <a aria-label="contact" class="btn btn-dark m-3" href="/#/contact"><i class="bi bi-telephone"></i></a>
-        </div>
+            <div class="d-flex flex-row flex-lg-column justify-content-center align-items-end h-100">
+                <a aria-label="Twitter" class="btn btn-dark m-3" href="#!"><i class="bi bi-twitter"></i><span>Twitter</span></a>
+                <a aria-label="Github" class="btn btn-dark m-3" href="https://github.com/feri-irawansyah"><i class="bi bi-github"></i><span>Github</span></a>
+                <a aria-label="Instagram" class="btn btn-dark m-3" href="#!"><i class="bi bi-instagram"></i><span>Instagram</span></a>
+                <a aria-label="home" class="btn btn-dark m-3" href="/#/"><i class="bi bi-house"></i><span>Home</span></a>
+                <a aria-label="notes" class="btn btn-dark m-3" href="/#/notes"><i class="bi bi-book"></i><span>Catatan</span></a>
+                <a aria-label="contact" class="btn btn-dark m-3" href="/#/contact"><i class="bi bi-telephone"></i><span>Kontak</span></a>
+            </div>
         </div>
 </section>
 

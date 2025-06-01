@@ -78,9 +78,11 @@
   --bs-link-hover-color: #224444;
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd; */
+  --bs-primary: #2a5555;
+  --bs-primary-rgb: 42, 85, 85;
   --bs-body-color: #dee2e6;
   --bs-body-color-rgb: 222, 226, 230;
-  --bs-body-bg: #212529;
+  --bs-body-bg: #181b1d;
   --bs-body-bg-rgb: 33, 37, 41;
   --bs-emphasis-color: #fff;
   --bs-emphasis-color-rgb: 255, 255, 255;
@@ -280,13 +282,28 @@ video.bg-video {
 
 @media (pointer: coarse) and (hover: none) {
   body {
-    background: url("../assets/img/bg-mobile-fallback.jpg") #2a5555 no-repeat center center scroll;
+    background: url("/img/bg-mobile-fallback.jpg") #2a5555 no-repeat center center scroll;
     background-size: cover;
   }
 
   body video {
     display: none;
   }
+}
+
+.btn-primary {
+  background-color: #04414dda;
+  border-color: #0589a3da;
+}
+
+.btn-primary:hover {
+  background-color: #0589a3da;
+  border-color: #04414dda;
+}
+
+.btn-primary:focus {
+  background-color: #0589a3da;
+  border-color: #04414dda;
 }
 
 .masthead {
@@ -390,10 +407,42 @@ video.bg-video {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: 0 1rem;
   height: 4rem;
   width: 4rem;
   border-radius: 100rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.social-icons .btn i {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.social-icons .btn span {
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+  opacity: 0;
+  display: none;
+  transition: opacity 0.3s ease, display 0.7s ease;
+  white-space: nowrap;
+}
+
+.social-icons .btn:hover {
+  width: 7rem;
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+
+.social-icons .btn:hover span {
+  opacity: 1;
+  display: inline-block;
+}
+
+.social-icons .btn:hover i {
+  transform: translateX(-0.5rem);
 }
 
 @media (min-width: 992px) {
