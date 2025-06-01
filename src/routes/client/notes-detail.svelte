@@ -61,11 +61,11 @@
 <div class="content">
     <div class="d-flex flex-column align-items-start w-100 gap-2">
       <a class="btn back" href="/#/notes/{slug?.slug}"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</a>
-      <h3 class="text-white">{result.data.title}</h3>
+      <h4 class="text-white">{result.data.title}</h4>
     </div>
 
     <div class="d-flex flex-row align-items-start justify-content-start w-100">
-      <img src="https://feri-irawansyah.github.io/favicon.ico" class="mb-3" width="50px" alt="">
+      <img src="/img/logo-ss.png" class="mb-3 rounded-circle" width="50px" alt="">
       <div class="flex-column">
         <a class="text-decoration-none text-muted" href="https://github.com/feri-irawansyah" target="_blank">
         Feri Irawansyah <img src="/img/real.png" width="20px" alt=""></a>

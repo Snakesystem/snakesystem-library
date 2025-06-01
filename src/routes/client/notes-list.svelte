@@ -1,7 +1,7 @@
 <script>
-    import LoadingList from '../../components/LoadingList.svelte';
     import { base_url, formatWIBDate } from '..';
     import { push } from 'svelte-spa-router';
+    import Loading from '../../components/Loading.svelte';
 
     export let slug; // pastikan ini di-declare dan dikirim dari router
 
@@ -38,9 +38,27 @@
 
 <div class="content">
     {#if loading}
-        <LoadingList/>
+        <Loading/> 
     {:else if result.data.length === 0}
-        <h1 class="text-center text-muted">No notes found.</h1>
+        <div class="d-flex flex-column">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/img/empty.png?v=1" class="img-fluid rounded" alt="Sedang di tulis">
+                        <div class="carousel-caption d-flex flex-column align-items-center w-100" style="margin-bottom: 4rem;">
+                            <h3>Catatan Sedang di Tulis</h3>
+                            <p>Kamu bisa kontak penulis melalui sosial media.</p>
+                            <div class="d-flex flex-row">
+                                <a class="btn btn-dark mx-2 fs-4" aria-label="Github" href="https://github.com/feri-irawansyah" target="_blank"><i class="bi bi-github"></i></a>
+                                <a class="btn btn-primary mx-2 fs-4" aria-label="Linkedin" href="https://github.com/feri-irawansyah" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                <a class="btn btn-info mx-2 fs-4" aria-label="Twitter" href="https://github.com/feri-irawansyah" target="_blank"><i class="bi bi-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gradient-overlay" style="height: 75%;"></div>
+                </div>
+            </div>
+        </div>
     {:else}
         <div class="row">
             <div class="col-12">
@@ -55,12 +73,12 @@
                             <div class="carousel-item {i === 0 ? 'active' : ''}">
                                 <img src={`/img/notes/${item.Slug}.png` || '/img/bg-mobile-fallback.jpg'} class="d-block w-100" alt={item.Title}>
                                 <div class="carousel-caption">
-                                    <p>{formatWIBDate(item.LastUpdate)}</p>
-                                    <h5 class="text-uppercase">{item.Title}</h5>
-                                    <p>{item.Description || 'No description available.'}</p>
-                                    <div class="d-flex gap-2" style="width: 100%; height: 20%; padding: 5px; border-radius: 5px;">
-                                        <img class="img-fluid" src="https://feri-irawansyah.github.io/favicon.ico" alt="" style="width: 1.5rem; height: 1.5rem;">
-                                        <span>Feri Irawansyah</span>
+                                    <p class="lh-1">{formatWIBDate(item.LastUpdate)}</p>
+                                    <h5 class="text-uppercase text-start">{item.Title}</h5>
+                                    <p class="text-start">{item.Description || 'No description available.'}</p>
+                                    <div class="d-flex gap-2" style="width: 100%; height: 20%; padding: 0 5px; border-radius: 5px;">
+                                        <img class="img-fluid rounded-circle" src="/img/logo-ss.png" alt="" style="width: 1.2rem; height: 1.2rem;">
+                                        <span class="lh-1">Feri Irawansyah</span>
                                     </div>
                                 </div>
                             </div>
@@ -90,15 +108,15 @@
                     {#each result.data as note}
                     <button class="card text-center" onclick={() => push(`/notes/${slug?.slug}/${note.Slug}`)}>
                         <div class="gradient-overlay"></div>
-                        <img src="/img/notes/{note.Slug}.png" class="card-img-top" alt="">
+                        <img src="/img/notes/{note.Slug}.png" class="card-img-top rounded py-1" alt="">
                         <div class="card-body">
-                            <h5 class="card-title text-uppercase">{note.Title}</h5>
+                            <h5 class="card-title text-start text-uppercase">{note.Title}</h5>
                             <p class="card-text text-start">{note.Description || 'No description available.'}</p>
                         </div>
                         <div class="card-footer text-body-secondary">
                             <div class="d-flex flex-row justify-content-between">
                                 <div class="d-flex gap-2">
-                                    <img class="img-fluid" src="https://feri-irawansyah.github.io/favicon.ico" alt="" style="width: 1.5rem; height: 1.5rem;">
+                                    <img class="img-fluid rounded-circle" src="/img/logo-ss.png" alt="" style="width: 1.5rem; height: 1.5rem;">
                                     <span>Feri Irawansyah</span>
                                 </div>
                                 <a class="text-decoration-none" href={`/#/notes/${slug?.slug}/${note.Slug}`}>
@@ -144,9 +162,11 @@
         /* overflow-y: scroll; */
     }
 
-    .content .card-group .card img:hover {
-        backdrop-filter: blur(10px);
+    .card:hover img {
+        filter: blur(4px);
+        transition: filter 0.3s ease;
     }
+
 
     .card-group .gradient-overlay {
         height: 100%;
@@ -155,7 +175,7 @@
 
     .card-body {
         position: absolute;
-        bottom: 4rem;
+        bottom: 2rem;
         z-index: 1;
         display: flex;
         flex-direction: column;

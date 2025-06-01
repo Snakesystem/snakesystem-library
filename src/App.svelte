@@ -1,4 +1,7 @@
 <script>
+  import jQuery from 'jquery';
+  // @ts-ignore
+  window.$ = window.jQuery = jQuery;
   import Router from 'svelte-spa-router'
   import { routes } from './routes';
   import AOS from 'aos';

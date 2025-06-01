@@ -1,7 +1,7 @@
 <script>
   // @ts-nocheck
     import { push } from "svelte-spa-router";
-  import { base_url } from "..";
+    import { base_url } from "..";
 
     let formData = $state({
         password: '',

@@ -16,7 +16,7 @@
 <div class="navigation flex h-100">
     <div class="card text-start">
         <div class="card-header d-flex flex-column justify-content-start">
-            <img src="https://feri-irawansyah.github.io/favicon.ico" class="mb-3" alt="" width="50px" height="50px">
+            <img src="/img/logo-ss.png" class="mb-3 rounded-circle" alt="" width="50px" height="50px">
             <h3 class="card-title lh-1">Feri Irawansyah </h3>
             <a class="text-decoration-none text-muted" href="https://github.com/feri-irawansyah" target="_blank">@feri-irawansyah <img src="/img/real.png" width="20px" alt=""></a>
         </div>
