@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
     import { base_url, formatWIBDate } from '..';
     import { push } from 'svelte-spa-router';
     import Loading from '../../components/Loading.svelte';
@@ -81,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="gradient-overlay" style="height: 75%;"></div>
+                    <div class="gradient-overlay" style="height: 100%;"></div>
                 </div>
             </div>
         </div>
@@ -92,7 +94,7 @@
                     <div class="carousel-inner">
                         {#each result.data.rows.slice(0, 3) as item, i}
                             <div class="carousel-item {i === 0 ? 'active' : ''}">
-                                <img src={`/img/notes/${item.Slug}.png` || '/img/bg-mobile-fallback.jpg'} class="d-block w-100" alt={item.Title}>
+                                <img src={`/img/notes/${item.Slug}.png`} onerror={(e) => e.target.src = '/img/bg-mobile-fallback.jpg'} class="d-block w-100" alt={item.Title}>
                                 <div class="carousel-caption">
                                     <p class="lh-1">{formatWIBDate(item.LastUpdate)}</p>
                                     <h5 class="text-uppercase text-start">{item.Title}</h5>
@@ -127,7 +129,7 @@
                     {#each result.data.rows as note}
                     <button class="card text-center" onclick={() => push(`/notes/${slug?.slug}/${note.Slug}`)}>
                         <div class="gradient-overlay"></div>
-                        <img src="/img/notes/{note.Slug}.png" class="card-img-top rounded py-1" alt="">
+                        <img src="/img/notes/{note.Slug}.png" onerror={(e) => e.target.src = '/img/bg-mobile-fallback.jpg'} class="card-img-top rounded py-1" alt="">
                         <div class="card-body">
                             <h5 class="card-title text-start text-uppercase">{note.Title}</h5>
                             <p class="card-text text-start">{note.Description || 'No description available.'}</p>

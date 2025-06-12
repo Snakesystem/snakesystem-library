@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
     const { slug } = $props();
 
     import { Marked } from 'marked';
@@ -77,7 +79,7 @@
         <Loading/>
     {:else}
       <div class="image-content d-flex justify-content-center px-5 pt-3">
-        <img class="img-fluid rounded" src="/img/notes/{result.data.slug}.png" alt="">
+        <img class="img-fluid rounded" src="/img/notes/{result.data.slug}.png" alt="" onerror={(e) => e.target.src = '/img/bg-mobile-fallback.jpg'}>
       </div>
       <div class="markdown-body">
           {@html htmlContent}

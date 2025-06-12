@@ -36,9 +36,9 @@
     <!-- <input type="text" class="form-control" id="category" required aria-describedby="category" disabled bind:value={formData.category}> -->
      <select id="category" class="form-select" required aria-label="category" bind:value={formData.category}>
         <option selected>Open this select menu</option>
-        <option value="technology">Technology</option>
-        <option value="database">Database</option>
-        <option value="personal">Personal</option>
+        <option value="backend">Backend</option>
+        <option value="frontend">Frontend</option>
+        <option value="random">Random</option>
       </select>
   </div>
   <div class="mb-3">
