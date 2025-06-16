@@ -1,28 +1,23 @@
 <script>
     import { push } from "svelte-spa-router";
-    // import notesRoutes from "../routes/client/books";
 
-    let isOpen = true;
+    let isOpen = false;
 
     const toggleMenu = () => {
         isOpen = !isOpen;
     };
 
     const buttons = [
-        { icon: 'bi-house', deg: -90, menu_url: '/', title: 'Home' },
-        { icon: 'bi-gear', deg: -45, menu_url: 'technology', title: 'Technology' },
-        { icon: 'bi-person', deg: 0, menu_url: 'personal', title: 'Personal' },
-        { icon: 'bi-database', deg: 45, menu_url: 'database', title: 'Database' },
-        { icon: 'bi-info-circle', deg: 90, menu_url: 'about', title: 'About' },
+        { icon: 'bi-house', deg: -180, menu_url: '/', title: 'Home' },
+        { icon: 'bi-telephone', deg: -135, menu_url: '/contact', title: 'Contact' },
+        { icon: 'bi-book', deg: -90, menu_url: '/notes', title: 'Notes' },
+        { icon: 'bi-github', deg: -45, menu_url: 'https://github.com/feri-irawansyah', title: 'Github' },
+        { icon: 'bi-instagram', deg: 0, menu_url: 'https://www.instagram.com/fery_ir.1', title: 'Instagram' },
     ];
 </script>
 
-<!-- <section>
-    <Router routes={notesRoutes} />
-</section> -->
-
 <div class="fab-container {isOpen ? 'open' : ''}" title="Menu">
-  <button aria-label="Toggle menu" class="fab-toggle {isOpen ? 'rotate' : ''}" on:click={toggleMenu}>
+  <button aria-label="Toggle menu" class="fab-toggle btn btn-primary {isOpen ? 'rotate' : ''}" on:click={toggleMenu}>
     <i class="bi bi-{isOpen ? 'columns-gap' : 'grid'}"></i>
   </button>
   <div class="fab-menu">
@@ -32,7 +27,7 @@
           if(item.menu_url === '/') {
             push(`/`)
           } else {
-            push(`/notes/${item.menu_url}`)
+            push(item.menu_url)
           }
         }}
         class="fab-item"
@@ -49,11 +44,16 @@
 
 
 <style>
+
+  .fab-container {
+    display: none;
+  }
+
   .fab-container {
     position: fixed;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 999;
   }
 
@@ -61,7 +61,6 @@
     width: 60px;
     height: 60px;
     border-radius: 10px;
-    background-color: #007bff;
     color: #fff;
     font-size: 24px;
     border: none;
@@ -89,7 +88,6 @@
     height: 50px;
     border-radius: 50%;
     border: none;
-    background-color: #17a2b8;
     color: #fff;
     font-size: 18px;
     opacity: 0;
@@ -106,5 +104,11 @@
       translateX(90px)
       rotate(calc(-1 * var(--deg)));
   }
+
+  @media screen and (max-width: 768px) {
+      .fab-container {
+        display: flex !important;
+      }
+    }
 
 </style>

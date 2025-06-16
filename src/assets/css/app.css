@@ -577,6 +577,93 @@ video.bg-video {
   right: 2rem;
 }
 
+@media screen and (max-width: 768px) {
+
+  .carousel button {
+    padding: 2px 5px;
+    font-size: 10px;
+  }
+
+  .carousel .btn-prev {
+    right: 3rem;
+  }
+  .carousel .btn-next {
+    right: 1rem;
+  }
+
+  .markdown-body {
+    padding: 0.5rem;
+  }
+
+  .markdown-body h1 {
+    font-size: 1.3rem;
+  }
+
+  .markdown-body h2 {
+    font-size: 1.2rem;
+  }
+
+  .markdown-body h3 {
+    font-size: 1.1rem;
+  }
+
+  .markdown-body h4 {
+    font-size: 1rem;
+  }
+
+  .markdown-body p, a, li, tr, td {
+    font-size: 0.8rem;
+  }
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.markdown-body table thead {
+  background-color: #f8f9fa;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 5px 0.2rem;
+  text-align: left;
+  border: 1px solid #888888;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+  color: #333;
+}
+
+.markdown-body table tbody tr:hover {
+  background-color: #f1f3f5;
+  transition: background 0.2s ease;
+}
+
+.status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.status.active {
+  background-color: #28a745;
+}
+
+.status.inactive {
+  background-color: #dc3545;
+}
+
 .carousel .btn:hover {
   background-color: #fff;
   color: #3d3d3d !important;

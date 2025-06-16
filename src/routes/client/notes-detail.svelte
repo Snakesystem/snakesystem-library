@@ -9,7 +9,7 @@
     import Loading from '../../components/Loading.svelte';
     import hljs from 'highlight.js';
     import 'highlight.js/styles/atom-one-dark.css'; // atau tema lain
-  import { base_url, formatWIBDate } from '..';
+    import { base_url, formatWIBDate } from '..';
 
     let result = $state({
         result: false,
@@ -66,7 +66,7 @@
       <h4 class="text-white">{result.data.title}</h4>
     </div>
 
-    <div class="d-flex flex-row align-items-start justify-content-start w-100">
+    <div class="author d-flex flex-row align-items-start justify-content-start w-100">
       <img src="/img/logo-ss.png" class="mb-3 rounded-circle" width="50px" alt="">
       <div class="flex-column">
         <a class="text-decoration-none text-muted" href="https://github.com/feri-irawansyah" target="_blank">
@@ -114,6 +114,36 @@
     .back:hover {
       color: #fff;
       text-decoration: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      .content {
+        padding: 0 10px;
+      }
+
+      .content h4 {
+        font-size: 1.2rem;
+      }
+
+      .content a.back {
+        margin-top: 1rem !important;
+      }
+
+      .content .author img {
+        width: 15px !important;
+      }
+
+      .content .author {
+        font-size: 0.8rem;
+      }
+
+      .content .author img.rounded-circle {
+        width: 40px !important;
+      }
+
+      .image-content {
+        padding: 0 5px !important;
+      }
     }
 
 </style>

@@ -1,6 +1,8 @@
 <script>
     import { push, location } from "svelte-spa-router";
 
+    const { close } = $props();
+
     const buttons = [
         { icon: 'bi-house-check-fill', menu_url: '/', title: 'Home' },
         { icon: 'bi-database-fill-gear', menu_url: '/notes/backend', title: 'Backend' },
@@ -23,7 +25,10 @@
         <div class="card-body">
             <div class="d-flex flex-column">
                 {#each buttons as item, i}
-                    <button class="btn text-start {item.menu_url === $location ? 'active' : ''}" onclick={() => push(item.menu_url)}>
+                    <button class="btn text-start {item.menu_url === $location ? 'active' : ''}" onclick={() => {
+                        push(item.menu_url);
+                        close();
+                    }}>
                         <i class="bi {item.icon} me-2"></i> {item.title} <i class="bi bi-chevron-right float-end {item.menu_url != $location ? 'd-none' : ''}"></i>
                     </button>
                 {/each}
@@ -53,7 +58,6 @@
         width: 100%;
         padding: 1rem;
         margin: 0.1rem 0;
-        /* border: 1px solid #353535; */
         background-color: transparent;
         font-size: 1.1rem;
         font-weight: 600;
@@ -66,5 +70,15 @@
 
     .card-body button:hover {
         background-color: #353535;
+    }
+
+    @media screen and (max-width: 768px) {
+        .navigation{
+            padding: 2rem 0 0 0;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+        }
     }
 </style>

@@ -1,6 +1,7 @@
 <script>
   // @ts-nocheck
     import { push } from "svelte-spa-router";
+  import MenuHome from "../../lib/MenuHome.svelte";
 
     let formData = $state({
         name: '',
@@ -34,9 +35,8 @@
                 </form>
             </div>
         </div>
-        <div class="social-icons">
+        <div class="social-icons desktop-only">
             <div class="d-flex flex-row flex-lg-column justify-content-center align-items-end h-100">
-                <a aria-label="Twitter" class="btn btn-dark m-3" href="#!"><i class="bi bi-twitter"></i><span>Twitter</span></a>
                 <a aria-label="Github" class="btn btn-dark m-3" href="https://github.com/feri-irawansyah"><i class="bi bi-github"></i><span>Github</span></a>
                 <a aria-label="Instagram" class="btn btn-dark m-3" href="#!"><i class="bi bi-instagram"></i><span>Instagram</span></a>
                 <a aria-label="home" class="btn btn-dark m-3" href="/#/"><i class="bi bi-house"></i><span>Home</span></a>
@@ -44,6 +44,7 @@
                 <a aria-label="contact" class="btn btn-dark m-3" href="/#/contact"><i class="bi bi-telephone"></i><span>Kontak</span></a>
             </div>
         </div>
+        <MenuHome />
 </section>
 
 <style scoped>
@@ -82,5 +83,23 @@
     .btn-primary:focus {
         background-color: #0589a3da;
         border-color: #04414dda;
+    }
+
+    .desktop-only {
+        display: flex;
+    }
+
+    @media screen and (max-width: 768px) {
+        .desktop-only {
+            display: none !important;
+        }
+
+        .masthead {
+            height: 80%;
+        }
+
+        .masthead-content {
+            padding: 0 1rem;
+        }
     }
 </style>

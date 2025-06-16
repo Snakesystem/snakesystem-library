@@ -235,4 +235,72 @@
         }
     }
 
+    @media screen and (max-width: 768px) {
+        .content {
+            padding: 1px;
+        }
+
+        .content p {
+            font-size: 0.85rem ! important;
+        }
+
+        .carousel {
+            border-radius: 10px;
+            padding: 3.5rem 2px 0 2px;
+        }
+
+        .carousel-inner {
+            padding: 0 ! important;
+        }
+
+        .carousel-item {
+            position: absolute;
+            padding: 0 ! important;
+        }
+
+        .carousel-caption {
+            position: absolute ! important;
+            bottom: -5.5rem ! important;
+            right: 0;
+            padding: 0 5px ! important;
+        }
+
+        .carousel-caption h5 {
+            font-size: 0.9rem ! important;
+        }
+
+        .carousel-caption p {
+            font-size: 0.75rem ! important;
+        }
+
+        .card {
+            margin: 0 ! important;
+        }
+
+        .card-body {
+            padding: 14px 5px;
+        }
+
+        .card-body h5 {
+            font-size: 0.9rem ! important;
+        }
+
+        .card-body p {
+            font-size: 0.8rem ! important;
+        }
+
+        .card-footer {
+            font-size: 0.75rem ! important;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .card-footer img {
+            width: 1rem ! important;
+            height: 1rem ! important;
+            margin: auto;
+        }
+    }
+
 </style>
