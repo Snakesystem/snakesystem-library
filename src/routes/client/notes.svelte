@@ -7,7 +7,7 @@
   import Navigation from "../../lib/Navigation.svelte";
   import About from './about.svelte';
 
-  let showNav = $state(true);
+  let showNav = $state(false);
 
   const toggleNav = () => {
     showNav = !showNav;
