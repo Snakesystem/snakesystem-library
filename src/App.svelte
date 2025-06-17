@@ -29,8 +29,15 @@
 <style>
   main {
     position: relative;
-    height: 100%;
+    height: 100vh;
     margin: 0;
     padding: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    main {
+      height: 100vh;
+      width: 100vw;
+    }
   }
 </style>

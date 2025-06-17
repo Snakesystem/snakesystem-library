@@ -82,6 +82,11 @@
     }
 
     @media screen and (max-width: 768px) {
+        section {
+            width: 100% ! important;
+            position: fixed;
+            padding: 0 ! important;
+        }
         .desktop-only {
             display: none !important;
         }

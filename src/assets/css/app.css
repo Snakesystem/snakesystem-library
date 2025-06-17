@@ -262,9 +262,22 @@ body {
   position: relative;
 }
 
+@media screen and (max-width: 768px) {
+
+  body {
+    height: 100% ! important;
+    width: 100% ! important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
 main {
   position: relative;
   height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 video.bg-video {

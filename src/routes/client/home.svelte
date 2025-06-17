@@ -39,8 +39,10 @@
 <style scoped>
 
     section {
-        height: 100vh;
+        height: 100%;
         overflow: hidden;
+        padding: 0;
+        margin: 0;
     }
     section:before {
         content: "";
@@ -59,12 +61,19 @@
     }
 
     @media screen and (max-width: 768px) {
+
+        section {
+            position: fixed;
+            padding: 0 ! important;
+        }
+
         .desktop-only {
             display: none !important;
         }
 
         .masthead {
             height: 80%;
+            width: 100%;
         }
     }
 </style>
