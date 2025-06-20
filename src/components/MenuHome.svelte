@@ -1,7 +1,7 @@
 <script>
   import { goto } from "$app/navigation";
 
-    let isOpen = false;
+    let isOpen = true;
 
     const toggleMenu = () => {
         isOpen = !isOpen;
@@ -24,7 +24,7 @@
     {#each buttons as item, i}
       <button
         on:click={() => goto(item.menu_url)}
-        class="fab-item"
+        class="fab-item btn btn-dark"
         id="fab-item-{i + 1}"
         title="{item.title}"
         style="--deg: {item.deg}deg;"
@@ -37,7 +37,7 @@
 </div>
 
 
-<style>
+<style lang="scss" scoped>
 
   .fab-container {
     display: none;

@@ -39,10 +39,12 @@
 </script>
 
 <div class="container h-100 d-flex justify-content-center flex-column" data-aos="fade-right" data-aos-duration="1000">
-    <a class="text-start btn back" href="/"><i class="bi bi-arrow-left-circle me-2"></i>Kembali Ke Home</a>
-    <h3 class="text-center">Catatan</h3>
-    <p class="text-center">Catatan gue—tutorial, wawasan teknologi, opini gajelas, kadang membingungkan, dan ide - ide tentang teknologi yang disusun untuk memicu ide dan terkadang memecahkan masalah kadang juga engga.</p>
-    <div class="row mb-5 justify-content-center scroll-custom">
+    <div class="bg-dark judul">
+        <a class="text-start btn back" href="/"><i class="bi bi-arrow-left-circle me-2"></i>Kembali Ke Home</a>
+        <h3 class="text-center">Catatan</h3>
+        <p class="text-center">Catatan gue—tutorial, wawasan teknologi, opini gajelas, kadang membingungkan, dan ide - ide tentang teknologi yang disusun untuk memicu ide dan terkadang memecahkan masalah kadang juga engga.</p>
+    </div>
+    <div class="row justify-content-center scroll-custom">
         {#each category as cat, i}
             <div class="col-md-4 my-3" key={i}>
                 <a class="card p-3 text-decoration-none h-100" href="/notes/{cat.name}">
@@ -66,7 +68,7 @@
     </div>
 </div>
 
-<style scoped>
+<style scoped lang="scss">
     .row {
         overflow-y: auto;
     }
@@ -88,6 +90,31 @@
 
     .card:hover h4, .card:hover p {
         text-decoration: underline;
+    }
+
+    @media screen and (max-width: 768px) {
+
+        .row {
+            margin-top: 0.5rem;
+        }
+
+        .judul {
+            border-radius: 10px;
+            margin-top: 1rem;
+            padding: 0 1rem;
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .back {
+                padding: 0.5rem 0;
+            }
+        }
+
+        .col-md-4 {
+            margin: 0.2rem 0 !important;
+        }
     }
     
 </style>

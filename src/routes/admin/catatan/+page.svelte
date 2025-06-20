@@ -1,5 +1,6 @@
 <script>
-  import ModalNotes from "$components/ModalNotes.svelte";
+  import ModalFilter from "$components/modals/ModalFilter.svelte";
+  import ModalNotes from "$components/modals/ModalNotes.svelte";
   import ModalContainer from "$directives/ModalContainer.svelte";
   import { fetchColumns, initTable, openModal } from "$lib/index.js";
 
@@ -67,6 +68,13 @@
 
   onMount(async () => {
     result = await fetchColumns(tablename);
+    result.data.unshift({
+      field: "Action",
+      title: "Action",
+      sortable: false,
+      filterControl: null
+    });
+
     if (result.result && result.data && Array.isArray(result.data)) {
       initTable(result.data, tablename, tablePK, filter, toolbarButton);
     } else {
@@ -103,5 +111,8 @@
     <table id="myTable" class="table table-striped" data-toggle="table"></table>
 </div>
 <ModalContainer id="add-notes" title="Add Notes" size="lg">
-    <ModalNotes data={{}} action="add" id={0}/>
+  <ModalNotes refreshTable={() => initTable(result.data, tablename, tablePK, filter, toolbarButton)}/>
+</ModalContainer>
+<ModalContainer id="filter" title="Filter {tablename}" size="lg">
+  <ModalFilter data={result.data} tablename={tablename} updateFilter={updateFilter} initTable={initTable} toolbarButton={toolbarButton} tablePK={tablePK}/>
 </ModalContainer>

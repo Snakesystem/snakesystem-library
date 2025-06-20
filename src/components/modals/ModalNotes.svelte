@@ -1,11 +1,11 @@
 <script>
-  import { baseUrl, closeModal } from "$lib/index.js";
+    import { baseUrl, closeModal, paramsEditData } from "$lib/index.js";
+
     import { onMount } from "svelte";
-    const { data = {
-        category: '',
-        title: '',
-        content_md: ''
-    }, action = 'add', id } = $props();
+    import Swal from "sweetalert2";
+    
+    const { refreshTable } = $props();
+    const { data, action, table } = $paramsEditData;
 
     let formData = $state({
         category: '',
@@ -13,7 +13,41 @@
         content_md: ''
     });
 
-    async function add() {
+    onMount(() => {
+      if(action === 'edit') {
+        formData.category = data.NotesCategory;
+        formData.title = data.Title;
+        formData.content_md = data.Content_MD;
+      }
+    })
+
+    async function submit(e, id) {
+      e.preventDefault();
+      if(action === 'edit') {
+        Swal.fire({
+          title: 'Belum di buat bang?',
+          text: "Data akan diubah!",
+          icon: 'warning',
+          preConfirm: () => {
+            refreshTable();
+          }
+          // preConfirm: async () => {
+          //   const response = await fetch(`${baseUrl}/library/update/${id}`, {
+          //       method: 'PUT',
+          //       credentials: 'include',
+          //       headers: {
+          //           'Content-Type': 'application/json'
+          //       },
+          //       body: JSON.stringify(formData)
+          //   });
+          //   const data = await response.json();
+          //   if(data.result) {
+          //     await refreshTable();
+          //     closeModal();
+          //   }
+          // }
+        })
+      } else {
         const response = await fetch(`${baseUrl}/library/create`, {
             method: 'POST',
             credentials: 'include',
@@ -24,13 +58,15 @@
         });
         const data = await response.json();
         if(data.result) {
-            closeModal();
+          await refreshTable();
+          closeModal();
         }
+      }
     }
 
 </script>
 
-<form on:submit|preventDefault={add}>
+<form onsubmit={(e) => submit(e, data.NotesNID)}>
   <div class="mb-3">
     <label for="category" class="form-label">Notes Category</label>
     <!-- <input type="text" class="form-control" id="category" required aria-describedby="category" disabled bind:value={formData.category}> -->
@@ -38,6 +74,7 @@
         <option selected>Open this select menu</option>
         <option value="backend">Backend</option>
         <option value="frontend">Frontend</option>
+        <option value="fullstack">Fullstack</option>
         <option value="random">Random</option>
       </select>
   </div>

@@ -113,4 +113,19 @@ body {
   scrollbar-color: $primary #2b3035;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: auto;
+}
+
+th, td {
+  text-align: center !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  color: #fff !important;
+}
+
 @import 'bootstrap/scss/bootstrap';

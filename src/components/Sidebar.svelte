@@ -1,5 +1,7 @@
 <script>
-  import { isOpen } from "$lib/index.js";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/state";
+  import { baseUrl, isOpen } from "$lib/index.js";
 
   const toggleSidebar = () => {
     isOpen.update(value => !value);
@@ -12,6 +14,22 @@
     { title: "Settings", icon: "bi-gear", href: "/admin/settings" },
     { title: "Chat", icon: "bi-chat", href: "/admin/chat" },
   ];
+
+  async function logout() {
+      const response = await fetch(`${baseUrl}/auth/logout`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      const data = await response.json();
+
+      if(response.ok) {
+        goto('/');
+      }
+      
+    }
 
 </script>
 
@@ -27,8 +45,8 @@
     
     <ul class="nav nav-pills flex-column">
       {#each menus as menu}
-        <li class="nav-item">
-          <a class="nav-link text-white d-flex align-items-center" href={menu.href}>
+        <li class="nav-item my-2">
+          <a class="nav-link text-white d-flex align-items-center {page.url.pathname === menu.href ? 'active' : ''}" href={menu.href}>
             <i class={`bi ${menu.icon} me-2`}></i>
             {#if $isOpen}
               <span>{menu.title}</span>
@@ -36,11 +54,13 @@
           </a>
         </li>
       {/each}
+        <li class="nav-item my-2">
+          <a class="nav-link d-flex align-items-center text-danger" href={null} onclick={logout} style="cursor: pointer;">
+            <i class="bi bi-box-arrow-right me-2"></i>
+            <span>{$isOpen ? 'Logout' : ''}</span>
+          </a>
+        </li>
     </ul>
-
-    <!-- <div class="mt-auto">
-      <button on:click={() => {}} class="bg-primary rounded-circle text-white" href={null}><i class="bi bi-box-arrow-in-right"></i></button>
-    </div> -->
   </div>
 
   <!-- Main Content -->
@@ -49,7 +69,7 @@
   </div>
 </div>
 
-<style>
+<style lang="scss" scoped>
   .sidebar-collapsed {
     width: 80px;
   }
@@ -61,7 +81,23 @@
     background-color: rgba(255, 255, 255, 0.1);
   }
 
+  .active {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
   .nav-link.active {
     background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .nav-link {
+    display: flex;
+    flex-direction: column;
+
+    i {
+      font-size: 1.8rem;
+    }
+    span {
+      font-size: 1.2rem;
+    }
   }
 </style>

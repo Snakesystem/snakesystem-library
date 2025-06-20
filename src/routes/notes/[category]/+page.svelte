@@ -69,7 +69,7 @@
     {#if loading}
         <LoadingList/> 
     {:else if result.data.rows.length === 0}
-        <div class="d-flex flex-column">
+        <div class="d-flex flex-column carousel-content">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -108,19 +108,19 @@
                             </div>
                         {/each}
                         <div class="gradient-overlay"></div>
+                        <button class="btn btn-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev" aria-label="Previous">
+                            <i class="bi bi-caret-left-fill"></i>
+                        </button>
+                        <button class="btn btn-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next" aria-label="Next">
+                            <i class="bi bi-caret-right-fill"></i>
+                        </button>
                     </div>
-                    <button class="btn btn-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev" aria-label="Previous">
-                        <i class="bi bi-caret-left-fill"></i>
-                    </button>
-                    <button class="btn btn-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next" aria-label="Next">
-                        <i class="bi bi-caret-right-fill"></i>
-                    </button>
                 </div>
             </div>
         </div>
         <div class="row" data-aos="fade-left" data-aos-duration="1000">
             <div class="col-12">
-                <div class="d-flex flex-column " style="padding: 1rem;">
+                <div class="d-flex flex-column judul" style="padding: 1rem;">
                     <h3>Latest Notes</h3>
                     <p>Jelajahi catatan saya—tutorial, wawasan teknologi, opini gajelas, dan pemikiran teknologi yang disusun untuk memicu ide dan terkadang memecahkan masalah.</p>
                 </div>
@@ -189,7 +189,6 @@
         justify-content: start;
         align-items: start;
         z-index: 99;
-        /* background-color: #04414dda; */
         padding: 1rem;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
@@ -202,7 +201,6 @@
         width: 100%;
         padding: 0.7rem;
         max-height: 85%;
-        /* overflow-y: scroll; */
     }
 
     .card:hover .card-img-top {
@@ -237,6 +235,9 @@
     }
 
     @media screen and (max-width: 768px) {
+        .back{
+            padding: 0 1rem;
+        }
         .content {
             padding: 1px;
         }
@@ -245,9 +246,13 @@
             font-size: 0.85rem ! important;
         }
 
+        .judul {
+            padding: 0 0.5rem !important;
+        }
+
         .carousel {
             border-radius: 10px;
-            padding: 3.5rem 2px 0 2px;
+            padding: 2rem 2px 0 2px;
         }
 
         .carousel-inner {
@@ -272,6 +277,10 @@
 
         .carousel-caption p {
             font-size: 0.75rem ! important;
+        }
+
+        .card-group {
+            padding: 2px !important;
         }
 
         .card {

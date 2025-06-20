@@ -21,7 +21,7 @@
 
 </script>
 
-<div class="navigation flex h-100">
+<div class="navigation flex h-100" data-aos="fade-in">
     <div class="card text-start">
         <div class="card-header d-flex flex-column justify-content-start">
             <img src="/img/logo-ss.png" class="mb-3 rounded-circle" alt="" width="50px" height="50px">

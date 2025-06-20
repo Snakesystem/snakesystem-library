@@ -26,7 +26,7 @@
                 title: 'Success',
                 text: data.message,
                 preConfirm: () => {
-                    goto('/dashboard');
+                    goto('/admin/dashboard');
                 }
             })
         } else {
@@ -49,14 +49,22 @@
                     login();
                 }}>
                     <h2 class="mb-4">Masuk Admin</h2>
-                    <div class="form-floating mb-3">
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email" bind:value={formData.email}>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="text" class="form-control" id="password" placeholder="Password" bind:value={formData.password}>
+                    </div>
+                    <!-- <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="email" placeholder="Email" bind:value={formData.email}>
                         <label for="email">Email</label>
-                    </div>
-                    <div class="form-floating mb-3">
+                    </div> -->
+                    <!-- <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="password" placeholder="Password" bind:value={formData.password}>
                         <label for="password">Password</label>
-                    </div>
+                    </div> -->
                     <button type="submit" class="btn btn-primary w-100 py-2 mb-5">Submit</button>
                 </form>
             </div>

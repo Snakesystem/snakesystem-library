@@ -1,5 +1,11 @@
 <!-- src/routes/+layout.svelte -->
 <script lang="ts">
+  import jQuery from 'jquery';
+  // @ts-ignore
+  window.$ = window.jQuery = jQuery;
+  import 'bootstrap-table/dist/bootstrap-table.min.css';
+  import 'bootstrap-table/dist/bootstrap-table.min.js';
+  import 'bootstrap-table/dist/extensions/auto-refresh/bootstrap-table-auto-refresh.min.js';
   import 'aos/dist/aos.css';
   import '$assets/scss/app.scss'
   import '$assets/css/app.css'
@@ -11,12 +17,6 @@
   import * as bootstrap from 'bootstrap';
   import { loading } from '$lib/index.js';
   import Loading from '$components/Loading.svelte';
-  import jQuery from 'jquery';
-  // @ts-ignore
-  window.$ = window.jQuery = jQuery;
-  import 'bootstrap-table/dist/bootstrap-table.min.css';
-  import 'bootstrap-table/dist/bootstrap-table.min.js';
-  import 'bootstrap-table/dist/extensions/auto-refresh/bootstrap-table-auto-refresh.min.js';
   import { checkSession, protectedPages, publicPages, wildcardPages } from '$middleware/session.js';
   
   AOS.init();

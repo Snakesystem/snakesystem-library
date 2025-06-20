@@ -20,7 +20,7 @@
 {/if}
 
 <style lang="scss" scoped>
-    .admin {
+  .admin {
     position: absolute;
     top: 0;
     left: 15rem;
@@ -32,24 +32,25 @@
     z-index: 0;
   }
 
+  .card {
+    position: relative;
+    width: 100%;
+    margin: 1rem 1rem 1rem 0;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+    border: none;
+  }
+
   .admin {
-    .sidebar-collapsed {
+    &.sidebar-collapsed {
         left: 6rem;
         width: calc(100% - 6rem);
     }
   }
 
   .admin {
-    .sidebar-open {
+    &.sidebar-open {
         left: 15rem;
         width: calc(100% - 15rem);
     }
-  }
-
-  .card {
-    width: 100%;
-    margin: 4rem 1rem 1rem 0;
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
-    border: none;
   }
 </style>

@@ -79,7 +79,7 @@
     {#if loading}
         <LoadingList/>
     {:else}
-    <div class=""  data-aos="fade-up" data-aos-duration="1000">
+    <div class="w-100"  data-aos="fade-up" data-aos-duration="1000">
         <div class="image-content d-flex justify-content-center px-5 pt-3" >
           <img class="img-fluid rounded" src="/img/notes/{result.data.slug}.png" alt="" onerror={(e) => e.target.src = '/img/bg-mobile-fallback.jpg'}>
         </div>

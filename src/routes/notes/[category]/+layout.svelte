@@ -16,7 +16,7 @@
       <button class="btn btn-dark btn-toggle d-lg-none" aria-label="Menu" onclick={toggleNav}>
         <i class="bi bi-list"></i>
       </button>
-      <div class="col-lg-3 sidebar-overlay {showNav ? 'show' : ''}" data-aos="fade-right" data-aos-duration="1000">
+      <div class="col-lg-3 sidebar-overlay {showNav ? 'show' : ''}">
         <Navigation close={() => showNav = false}/>
       </div>
       <div class="col-lg-9">
@@ -50,19 +50,19 @@
     .sidebar-overlay {
       position: absolute;
       top: 0;
-      left: 0;
       height: 100vh;
+      left: 0;
       width: 0;
       overflow: hidden;
       background-color: #323434;
-      transition: width 0.3s ease, opacity 0.3s ease;
+      transition: opacity 0.3s ease;
       z-index: 9999;
       opacity: 0;
     }
 
     .sidebar-overlay.show {
-      width: 60%;
       opacity: 1;
+      width: 60%;
     }
 
     .btn-toggle {

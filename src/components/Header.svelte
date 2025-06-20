@@ -1,29 +1,11 @@
 <script>
-    import { baseUrl } from "$lib/index.js";
     import { isOpen } from "$lib/index.js";
     import { page } from "$app/state";
-    import { goto } from "$app/navigation";
 
     function RenameUrl(params) {
       if(params) {
           return params.replace('/', ' ').toUpperCase();
       }
-    }
-
-    async function logout() {
-      const response = await fetch(`${baseUrl}/auth/logout`, {
-          method: 'GET',
-          credentials: 'include',
-          headers: {
-              'Content-Type': 'application/json'
-          }
-      });
-      const data = await response.json();
-
-      if(response.ok) {
-        goto('/');
-      }
-      
     }
 
 </script>
@@ -32,7 +14,6 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="/dashboard">{RenameUrl(page.url.location)}</a>
     <div class="navbar-nav d-flex flex-row gap-3">
-      <button type="button" aria-label="Logout" onclick={() => logout()} class="nav-link bg-primary rounded-circle text-white"><i class="bi bi-box-arrow-in-right"></i></button>
       <!-- <a class="nav-link" href="#">Features</a>
       <a class="nav-link" href="#">Pricing</a>
       <a class="nav-link" >Disabled</a> -->
@@ -55,12 +36,6 @@
   .container-fluid .navbar-nav {
     width: 3rem;
     height: 3rem;
-  }
-
-  .container-fluid .navbar-nav button i {
-    padding: 0.8rem;
-    font-size: 1.2rem;
-    cursor: pointer;
   }
 
   .navbar.sidebar-collapsed {
