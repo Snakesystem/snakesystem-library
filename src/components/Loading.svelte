@@ -1,30 +1,28 @@
-<div class="card" aria-hidden="true">
-  <img src="/svg/spinner.svg" class="card-img-top" alt="...">
-    <h5 aria-label="Loading" class="card-title placeholder-glow text-center">
-      <span class="placeholder text-primary col-6"></span>
-    </h5>
-    <p class="card-text placeholder-glow text-center">
-      <span class="placeholder text-primary col-7"></span>
-      <span class="placeholder text-primary col-4"></span>
-      <span class="placeholder text-primary col-4"></span>
-      <span class="placeholder text-primary col-6"></span>
-      <span class="placeholder text-primary col-8"></span>
-      <a aria-label="Loading" class="btn btn-primary my-2 disabled placeholder col-6" aria-disabled="true"></a>
-    </p>
+<script>
+    import { Jumper } from 'svelte-loading-spinners';
+    import { fade } from 'svelte/transition';
+</script>
+
+<div class="loading-screen" transition:fade>
+    <Jumper size="100" color="#00809D" unit="px" duration="1s" />
+    <span>Please wait...</span>
 </div>
 
 <style>
-    .card {
+    .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-        margin: 1rem;
-        border: none;
-        background-color: #292b2c;
-    }
-
-    .card-img-top {
-        width: 30%;
-        height: 30%;
-        margin: auto;
-        background-color: #292b2c;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        color: #fff;
+        font-size: 24px;
+        transition: opacity 0.3s ease-in-out;
     }
 </style>

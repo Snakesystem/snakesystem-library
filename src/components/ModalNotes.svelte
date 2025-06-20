@@ -1,6 +1,6 @@
 <script>
+  import { baseUrl, closeModal } from "$lib/index.js";
     import { onMount } from "svelte";
-    import { base_url, closeModal } from "../routes";
     const { data = {
         category: '',
         title: '',
@@ -14,7 +14,7 @@
     });
 
     async function add() {
-        const response = await fetch(`${base_url}/library/create`, {
+        const response = await fetch(`${baseUrl}/library/create`, {
             method: 'POST',
             credentials: 'include',
             headers: {

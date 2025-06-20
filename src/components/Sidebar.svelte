@@ -1,15 +1,16 @@
 <script>
-  import { isOpen } from "../routes"
+  import { isOpen } from "$lib/index.js";
 
   const toggleSidebar = () => {
     isOpen.update(value => !value);
   };
 
   const menus = [
-    { title: "Dashboard", icon: "bi-speedometer2", href: "#/dashboard" },
-    { title: "Notes", icon: "bi-journal-text", href: "#/dashboard/notes" },
-    { title: "Email Log", icon: "bi-envelope", href: "#/dashboard/email" },
-    { title: "Settings", icon: "bi-gear", href: "#/dashboard/settings" }
+    { title: "Dashboard", icon: "bi-speedometer2", href: "/admin/dashboard" },
+    { title: "Catatan", icon: "bi-journal-text", href: "/admin/catatan" },
+    // { title: "Email Log", icon: "bi-envelope", href: "/admin/email" },
+    { title: "Settings", icon: "bi-gear", href: "/admin/settings" },
+    { title: "Chat", icon: "bi-chat", href: "/admin/chat" },
   ];
 
 </script>
@@ -19,7 +20,7 @@
   <div class={`text-white p-3 ${$isOpen ? 'sidebar-open' : 'sidebar-collapsed'}`} style="min-height: 100vh; transition: width 0.3s;">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h5 class="mb-0">{$isOpen ? 'Snakesystem' : ''}</h5>
-      <button class="btn btn-sm btn-light" on:click={toggleSidebar}>
+      <button aria-label="Toggle sidebar" class="btn btn-sm btn-light" onclick={toggleSidebar}>
         <i class={`bi ${$isOpen ? 'bi-chevron-left' : 'bi-chevron-right'}`}></i>
       </button>
     </div>

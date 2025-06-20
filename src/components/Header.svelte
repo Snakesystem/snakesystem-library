@@ -1,6 +1,8 @@
 <script>
-    import { base_url, isOpen } from "../routes"
-    import { location } from "svelte-spa-router"
+    import { baseUrl } from "$lib/index.js";
+    import { isOpen } from "$lib/index.js";
+    import { page } from "$app/state";
+    import { goto } from "$app/navigation";
 
     function RenameUrl(params) {
       if(params) {
@@ -9,7 +11,7 @@
     }
 
     async function logout() {
-      const response = await fetch(`${base_url}/auth/logout`, {
+      const response = await fetch(`${baseUrl}/auth/logout`, {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -17,18 +19,20 @@
           }
       });
       const data = await response.json();
-      if(data.result) {
-          location.set('/');
+
+      if(response.ok) {
+        goto('/');
       }
+      
     }
 
 </script>
 
 <nav class="navbar {$isOpen ? 'sidebar-open' : 'sidebar-collapsed'}">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">{RenameUrl($location)}</a>
+    <a class="navbar-brand" href="/dashboard">{RenameUrl(page.url.location)}</a>
     <div class="navbar-nav d-flex flex-row gap-3">
-      <button type="button" on:click={() => logout()} class="nav-link bg-primary rounded-circle text-white"><i class="bi bi-box-arrow-in-right"></i></button>
+      <button type="button" aria-label="Logout" onclick={() => logout()} class="nav-link bg-primary rounded-circle text-white"><i class="bi bi-box-arrow-in-right"></i></button>
       <!-- <a class="nav-link" href="#">Features</a>
       <a class="nav-link" href="#">Pricing</a>
       <a class="nav-link" >Disabled</a> -->

@@ -1,21 +1,18 @@
-import { defineConfig } from 'vite'
-import { svelte } from '@sveltejs/vite-plugin-svelte'
+import devtoolsJson from 'vite-plugin-devtools-json';
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+import path from 'path';
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [svelte()],
-  // server: {
-  //   proxy: {
-  //     '/api': {
-  //       target: 'https://snakesystem-web-api-tdam.shuttle.app/api/v1',
-  //       changeOrigin: true,
-  //       rewrite: (path) => path.replace(/^\/api/, '')
-  //     },
-  //     '/great': {
-  //       target: 'https://snakesystem-web-api-tdam.shuttle.app',
-  //       changeOrigin: true,
-  //       rewrite: (path) => path.replace(/^\/great/, '')
-  //     }
-  //   }
-  // }
-})
+	plugins: [sveltekit(), devtoolsJson()],
+	resolve: {
+		alias: {
+			'$routes': path.resolve(__dirname, 'src/routes'),
+			'$lib': path.resolve(__dirname, 'src/lib'),
+			'$assets': path.resolve(__dirname, 'src/assets'),
+			'$components': path.resolve(__dirname, 'src/components'),
+			'$directives': path.resolve(__dirname, 'src/directives'),
+			'$middleware': path.resolve(__dirname, 'src/middleware'),
+		},
+	},
+});

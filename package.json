@@ -1,34 +1,61 @@
 {
-  "name": "snakesystem-library",
-  "private": true,
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^5.0.3",
-    "aos": "^2.3.4",
-    "bootstrap": "^5.3.6",
-    "bootstrap-icons": "^1.13.1",
-    "highlight.js": "^11.11.1",
-    "markdown-it": "^14.1.0",
-    "marked": "^15.0.11",
-    "marked-code-format": "^1.1.6",
-    "marked-highlight": "^2.2.1",
-    "mdsvex": "^0.12.6",
-    "svelte": "^5.28.1",
-    "vite": "^6.3.5",
-    "@popperjs/core": "^2.11.8",
-    "bootstrap-table": "^1.24.1",
-    "jquery": "^3.7.1",
-    "sortablejs": "^1.15.6",
-    "@sveltestrap/sveltestrap": "^7.1.0",
-    "sweetalert2": "^11.19.1"
-  },
-  "dependencies": {
-    "svelte-spa-router": "^4.0.1"
-  }
+	"name": "snakesystem-library",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build && npm run prepack",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"prepack": "svelte-kit sync && svelte-package && publint"
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"sideEffects": [
+		"**/*.css"
+	],
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		}
+	},
+	"peerDependencies": {
+		"svelte": "^5.0.0"
+	},
+	"devDependencies": {
+		"@popperjs/core": "^2.11.8",
+		"@sveltejs/adapter-auto": "^6.0.0",
+		"@sveltejs/kit": "^2.16.0",
+		"@sveltejs/package": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"@sveltestrap/sveltestrap": "^7.1.0",
+		"aos": "^2.3.4",
+		"bootstrap": "^5.3.7",
+		"bootstrap-icons": "^1.13.1",
+		"bootstrap-table": "^1.24.1",
+		"highlight.js": "^11.11.1",
+		"jquery": "^3.7.1",
+		"markdown-it": "^14.1.0",
+		"marked": "^15.0.12",
+		"marked-code-format": "^1.1.6",
+		"marked-highlight": "^2.2.1",
+		"mdsvex": "^0.12.6",
+		"publint": "^0.3.2",
+		"sass": "^1.77.6",
+		"svelte": "^5.0.0",
+		"svelte-loading-spinners": "^0.3.6",
+		"sweetalert2": "^11.22.0",
+		"typescript": "^5.3.2",
+		"vite": "^6.2.6",
+		"vite-plugin-devtools-json": "^0.2.0"
+	},
+	"keywords": [
+		"svelte"
+	]
 }

@@ -1,56 +1,19 @@
-<section>
-    <div class="card" aria-hidden="true">
-        <img src="/svg/spinner.svg" class="card-img-top" alt="...">
-        <h5 aria-label="Loading" class="card-title placeholder-glow text-center">
-        <span class="placeholder text-primary col-6"></span>
-        </h5>
-        <p class="card-text placeholder-glow text-center">
-        <span class="placeholder text-primary col-7"></span>
-        <span class="placeholder text-primary col-4"></span>
-        <span class="placeholder text-primary col-4"></span>
-        <span class="placeholder text-primary col-6"></span>
-        <span class="placeholder text-primary col-8"></span>
-        <a aria-label="Loading" class="btn btn-primary my-2 disabled placeholder col-6" aria-disabled="true"></a>
-        </p>
-    </div>
-    <div class="card" aria-hidden="true">
-        <img src="/svg/spinner.svg" class="card-img-top" alt="...">
-        <h5 aria-label="Loading" class="card-title placeholder-glow text-center">
-        <span class="placeholder text-primary col-6"></span>
-        </h5>
-        <p class="card-text placeholder-glow text-center">
-        <span class="placeholder text-primary col-7"></span>
-        <span class="placeholder text-primary col-4"></span>
-        <span class="placeholder text-primary col-4"></span>
-        <span class="placeholder text-primary col-6"></span>
-        <span class="placeholder text-primary col-8"></span>
-        <a aria-label="Loading" class="btn btn-primary my-2 disabled placeholder col-6" aria-disabled="true"></a>
-        </p>
-    </div>
-    <div class="card" aria-hidden="true">
-        <img src="/svg/spinner.svg" class="card-img-top" alt="...">
-        <h5 aria-label="Loading" class="card-title placeholder-glow text-center">
-        <span class="placeholder text-primary col-6"></span>
-        </h5>
-        <p class="card-text placeholder-glow text-center">
-        <span class="placeholder text-primary col-7"></span>
-        <span class="placeholder text-primary col-4"></span>
-        <span class="placeholder text-primary col-4"></span>
-        <span class="placeholder text-primary col-6"></span>
-        <span class="placeholder text-primary col-8"></span>
-        <a aria-label="Loading" class="btn btn-primary my-2 disabled placeholder col-6" aria-disabled="true"></a>
-        </p>
-    </div>
-</section>
+<div class="card" aria-hidden="true">
+  <img src="/svg/spinner.svg" class="card-img-top" alt="...">
+    <h5 aria-label="Loading" class="card-title placeholder-glow text-center">
+      <span class="placeholder text-primary col-6"></span>
+    </h5>
+    <p class="card-text placeholder-glow text-center">
+      <span class="placeholder text-primary col-7"></span>
+      <span class="placeholder text-primary col-4"></span>
+      <span class="placeholder text-primary col-4"></span>
+      <span class="placeholder text-primary col-6"></span>
+      <span class="placeholder text-primary col-8"></span>
+      <a aria-label="Loading" class="btn btn-primary my-2 disabled placeholder col-6" aria-disabled="true"></a>
+    </p>
+</div>
 
 <style>
-
-    section {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
     .card {
         width: 100%;
         margin: 1rem;
