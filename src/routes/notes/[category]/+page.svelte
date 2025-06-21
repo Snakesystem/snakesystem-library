@@ -1,6 +1,7 @@
 <script>
     import { goto } from "$app/navigation";
     import { page } from "$app/state";
+  import CarouselContent from "$components/CarouselContent.svelte";
     import LoadingList from "$components/LoadingList.svelte";
     import { baseUrl, formatWIBDate } from "$lib/index.js";
 
@@ -70,52 +71,12 @@
         <LoadingList/> 
     {:else if result.data.rows.length === 0}
         <div class="d-flex flex-column carousel-content">
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="/img/empty.png?v=1" class="img-fluid rounded" alt="Sedang di tulis">
-                        <div class="carousel-caption d-flex flex-column align-items-center w-100" style="margin-bottom: 4rem;">
-                            <h3>Catatan Sedang di Tulis</h3>
-                            <p>Kamu bisa kontak penulis melalui sosial media.</p>
-                            <div class="d-flex flex-row">
-                                <a class="btn btn-dark mx-2 fs-4" aria-label="Github" href="https://github.com/feri-irawansyah" target="_blank"><i class="bi bi-github"></i></a>
-                                <a class="btn btn-primary mx-2 fs-4" aria-label="Linkedin" href="https://github.com/feri-irawansyah" target="_blank"><i class="bi bi-linkedin"></i></a>
-                                <a class="btn btn-info mx-2 fs-4" aria-label="Twitter" href="https://github.com/feri-irawansyah" target="_blank"><i class="bi bi-twitter"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gradient-overlay" style="height: 100%;"></div>
-                </div>
-            </div>
+            <CarouselContent data={result.data.rows} />
         </div>
     {:else}
         <div class="row" data-aos="fade-out" data-aos-duration="1000">
             <div class="col-12">
-                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        {#each result.data.rows.slice(0, 3) as item, i}
-                            <div class="carousel-item {i === 0 ? 'active' : ''}">
-                                <img src={`/img/notes/${item.Slug}.png`} onerror={(e) => e.target.src = '/img/bg-mobile-fallback.jpg'} class="d-block w-100" alt={item.Title}>
-                                <div class="carousel-caption">
-                                    <p class="lh-1">{formatWIBDate(item.LastUpdate)}</p>
-                                    <h5 class="text-uppercase text-start">{item.Title}</h5>
-                                    <p class="text-start">{item.Description || 'No description available.'}</p>
-                                    <div class="d-flex gap-2" style="width: 100%; height: 20%; padding: 0 5px; border-radius: 5px;">
-                                        <img class="img-fluid rounded-circle" src="/img/logo-ss.png" alt="" style="width: 1.2rem; height: 1.2rem;">
-                                        <span class="lh-1">Feri Irawansyah</span>
-                                    </div>
-                                </div>
-                            </div>
-                        {/each}
-                        <div class="gradient-overlay"></div>
-                        <button class="btn btn-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev" aria-label="Previous">
-                            <i class="bi bi-caret-left-fill"></i>
-                        </button>
-                        <button class="btn btn-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next" aria-label="Next">
-                            <i class="bi bi-caret-right-fill"></i>
-                        </button>
-                    </div>
-                </div>
+                <CarouselContent data={result.data.rows} />
             </div>
         </div>
         <div class="row" data-aos="fade-left" data-aos-duration="1000">
@@ -248,35 +209,6 @@
 
         .judul {
             padding: 0 0.5rem !important;
-        }
-
-        .carousel {
-            border-radius: 10px;
-            padding: 2rem 2px 0 2px;
-        }
-
-        .carousel-inner {
-            padding: 0 ! important;
-        }
-
-        .carousel-item {
-            position: absolute;
-            padding: 0 ! important;
-        }
-
-        .carousel-caption {
-            position: absolute ! important;
-            bottom: -5.5rem ! important;
-            right: 0;
-            padding: 0 5px ! important;
-        }
-
-        .carousel-caption h5 {
-            font-size: 0.9rem ! important;
-        }
-
-        .carousel-caption p {
-            font-size: 0.75rem ! important;
         }
 
         .card-group {

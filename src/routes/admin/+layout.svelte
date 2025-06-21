@@ -1,8 +1,8 @@
 <script>
-  import Header from '$components/Header.svelte';
-  import Loading from '$components/Loading.svelte';
-  import Sidebar from '$components/Sidebar.svelte';
-  import { isOpen, loading } from '$lib/index.js';
+    import Header from '$components/Header.svelte';
+    import Loading from '$components/Loading.svelte';
+    import Sidebar from '$components/Sidebar.svelte';
+    import { isOpen, loading } from '$lib/index.js';
 
     const { children } = $props();
 </script>

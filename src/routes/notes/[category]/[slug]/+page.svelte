@@ -10,7 +10,7 @@
     import hljs from 'highlight.js';
     import 'highlight.js/styles/atom-one-dark.css'; 
     import { baseUrl, formatWIBDate } from "$lib/index.js";
-  import LoadingList from "$components/LoadingList.svelte";
+    import LoadingList from "$components/LoadingList.svelte";
 
     let result = $state({
         result: false,

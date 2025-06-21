@@ -46,6 +46,7 @@
 		"marked-code-format": "^1.1.6",
 		"marked-highlight": "^2.2.1",
 		"mdsvex": "^0.12.6",
+		"pace-js": "^1.2.4",
 		"publint": "^0.3.2",
 		"sass": "^1.77.6",
 		"svelte": "^5.0.0",

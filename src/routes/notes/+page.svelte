@@ -39,7 +39,7 @@
 </script>
 
 <div class="container h-100 d-flex justify-content-center flex-column" data-aos="fade-right" data-aos-duration="1000">
-    <div class="bg-dark judul">
+    <div class="judul">
         <a class="text-start btn back" href="/"><i class="bi bi-arrow-left-circle me-2"></i>Kembali Ke Home</a>
         <h3 class="text-center">Catatan</h3>
         <p class="text-center">Catatan gue—tutorial, wawasan teknologi, opini gajelas, kadang membingungkan, dan ide - ide tentang teknologi yang disusun untuk memicu ide dan terkadang memecahkan masalah kadang juga engga.</p>
@@ -99,6 +99,7 @@
         }
 
         .judul {
+            background-color: #181b1d;
             border-radius: 10px;
             margin-top: 1rem;
             padding: 0 1rem;

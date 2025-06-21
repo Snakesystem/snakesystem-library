@@ -128,4 +128,44 @@ th, td {
   color: #fff !important;
 }
 
+/* Override bar color */
+.pace {
+  .pace-progress {
+    background: #00809D !important; /* ganti dengan warna yang lo mau */
+  }
+}
+
+/* Override spinner color (jika theme pake spinner) */
+.pace {
+  .pace-activity {
+    border-top-color: #00809D !important;
+    border-left-color: #00809D !important;
+  }
+}
+
+/* Kalau pakai theme minimal yang hanya bar */
+.pace .pace-activity,
+.pace .pace-activity-inner {
+  background: #00809D !important;
+}
+
+/* Override shadow atau glow di sekeliling bar */
+.pace  {
+  .pace-progress-inner {
+    box-shadow: 0 0 10px #00809D !important;
+  }
+}
+
+/* Contoh untuk tema tanpa spinner, hanya bar tipis di atas */
+.pace  {
+  .pace-progress {
+    height: 3px; /* ketinggian bar */
+  }
+}
+
+/* Kalau mau ubah warna background overlay (jika ada) */
+.pace .pace-ajax {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
 @import 'bootstrap/scss/bootstrap';

@@ -34,7 +34,7 @@
   }
 
   .col-lg-9 {
-    padding: 0 1rem;
+    padding: 0;
   }
 
   .btn-toggle {

@@ -46,7 +46,7 @@
 
 <style scoped>
     .navigation{
-        padding: 2rem 0 0 3rem;
+        padding: 2rem 0 0 0;
     }
     .card {
         width: 100%;
@@ -67,6 +67,7 @@
         background-color: transparent;
         font-size: 1.1rem;
         font-weight: 600;
+        border: none;
     }
 
     .active {

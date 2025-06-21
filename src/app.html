@@ -1,13 +1,54 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="https://feri-irawansyah.github.io/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Snakesystem Library</title>
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div>%sveltekit.body%</div>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Snakesystem Library | Feri Irawansyah</title>
+    <meta name="description" content="Snakesystem Library adalah pusat dokumentasi dan tutorial seputar pengembangan software modern. Belajar Rust, Svelte, dan backend development dengan mudah dan terstruktur.">
+    <meta name="keywords" content="Rust, Svelte, Backend, SQLX, Actix Web, Snakesystem, Tutorial Programming">
+    <meta name="author" content="Feri Irawansyah">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://snakesystem-library.vercel.app" />
+    <meta property="og:title" content="Snakesystem Library" />
+    <meta property="og:description" content="Belajar Rust, Svelte, dan pengembangan backend modern di Snakesystem Library." />
+    <meta property="og:image" content="https://feri-irawansyah.github.io/img/hero-bg.jpeg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://snakesystem-library.vercel.app" />
+    <meta name="twitter:title" content="Snakesystem Library" />
+    <meta name="twitter:description" content="Belajar Rust, Svelte, dan pengembangan backend modern di Snakesystem Library." />
+    <meta name="twitter:image" content="https://feri-irawansyah.github.io/img/hero-bg.jpegg" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://feri-irawansyah.github.io/favicon.ico" />
+    
+    %sveltekit.head%
+</head>
+
+
+  </head>
+
+  <body data-sveltekit-preload-data="hover">
+    <div>%sveltekit.body%</div>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        if (window.Pace) {
+          const min = 500;
+          const since = window.__paceStartTime || Date.now();
+          const wait = Math.max(0, min - (Date.now() - since));
+          setTimeout(() => {
+            window.Pace.stop();
+          }, wait);
+        }
+      });
+      // Simpan waktu mulai
+      window.__paceStartTime = Date.now();
+    </script>
+  </body>
 </html>
