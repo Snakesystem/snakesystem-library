@@ -369,13 +369,10 @@ video.bg-video {
 }
 
 .content .carousel {
-  /* background-color: aqua; */
   padding: 1rem;
   width: 100%;
   height: 40vh;
-  /* FIXED HEIGHT agar konsisten */
   overflow: hidden;
-  /* CEGAH konten keluar */
   position: relative;
 }
 
@@ -388,7 +385,7 @@ video.bg-video {
 .content .carousel .carousel-item img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   /* GAMBAR AKAN DICROP supaya penuh area */
   object-position: center;
   display: block;
@@ -410,20 +407,19 @@ video.bg-video {
   position: absolute !important;
   z-index: 99 !important;
   color: #fff;
-  top: 0;
   left: 0;
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: end;
-  margin-bottom: 20%;
+  top: 0;
   padding: 2rem;
+  height: 45vh;
 }
 
 .content .carousel button {
   position: absolute;
-  top: 90%;
-  transform: translateY(-50%);
+  top: 33vh;
 }
 
 .carousel button.carousel-control-prev {

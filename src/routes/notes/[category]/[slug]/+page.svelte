@@ -64,7 +64,7 @@
 <div class="content scroll-custom">
     <div class="d-flex flex-column align-items-start w-100 gap-2">
       <a class="btn back" href="/notes/{category}"><i class="bi bi-arrow-left-circle me-2"></i>Kembali</a>
-      <h4 class="text-white">{result.data.title}</h4>
+      <h4 class="text-uppercase text-white">{result.data.title}</h4>
     </div>
 
     <div class="author d-flex flex-row align-items-start justify-content-start w-100">

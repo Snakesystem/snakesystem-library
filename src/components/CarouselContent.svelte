@@ -8,18 +8,18 @@
     <div id="carouselExampleAutoplaying" class="carousel slide carousel-data" data-bs-ride="carousel">
         <div class="carousel-inner">
             {#each data.slice(0, 3) as item, i}
-                <div class="carousel-item {i === 0 ? 'active' : ''}">
+                <a href={`/notes/${item.NotesCategory}/${item.Slug}`} class="carousel-item {i === 0 ? 'active' : ''}">
                     <img src={`/img/notes/${item.Slug}.png`} onerror={(e) => e.target.src = '/img/bg-mobile-fallback.jpg'} class="d-block w-100" alt={item.Title}>
                     <div class="carousel-caption">
                         <p class="lh-1">{formatWIBDate(item.LastUpdate)}</p>
                         <h5 class="text-uppercase text-start">{item.Title}</h5>
                         <p class="text-start">{item.Description || 'No description available.'}</p>
-                        <div class="d-flex gap-2" style="width: 100%; height: 20%; padding: 0 5px; border-radius: 5px;">
+                        <div class="d-flex gap-2 author" style="width: 100%; height: 20%; padding: 0 5px; border-radius: 5px;">
                             <img class="img-fluid rounded-circle" src="/img/logo-ss.png" alt="" style="width: 1.2rem; height: 1.2rem;">
                             <span class="lh-1">Feri Irawansyah</span>
                         </div>
                     </div>
-                </div>
+                </a>
             {/each}
             <div class="gradient-overlay"></div>
             <button class="btn btn-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev" aria-label="Previous">
@@ -54,15 +54,25 @@
 
     .carousel-data {
         .carousel-caption{
-            // background-color: salmon !important;
             width: 100% !important;
         }
+    }
+
+    .carousel a:hover img.d-block {
+        filter: blur(4px) !important;
+        transition: filter 0.3s ease !important;
+    }
+
+    .carousel a:hover h5, .carousel:hover p, .carousel:hover span {
+        text-decoration: underline !important;
     }
 
     @media screen and (max-width: 768px) {
         .carousel {
             border-radius: 10px;
             padding: 2rem 2px 0 2px;
+            height: auto !important;
+            margin-bottom: 1rem;
         }
 
         .carousel-inner {
@@ -76,9 +86,29 @@
 
         .carousel-caption {
             position: absolute !important;
-            bottom: -5.5rem !important;
+            bottom: -1rem !important;
             right: 0;
             padding: 0 5px !important;
+            height: auto !important;
+
+            .author {
+                // background-color: salmon !important;
+                display: flex !important;
+
+                img {
+                    width: 1rem !important;
+                    height: 1rem !important;
+                }
+
+                span {
+                    line-height: 1rem !important;
+                }
+            }
+        }
+
+        .carousel button {
+            position: absolute;
+            top: 80% !important;
         }
 
         .carousel-caption h5 {
